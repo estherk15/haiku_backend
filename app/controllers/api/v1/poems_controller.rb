@@ -25,7 +25,7 @@ class Api::V1::PoemsController < ApplicationController
   private
 
   def poem_params
-    params.permit(:title, :content)
+    params.require(:poem).permit(:title, :content, :user_id)
   end
 
 end
