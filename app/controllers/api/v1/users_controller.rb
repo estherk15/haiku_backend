@@ -10,6 +10,11 @@ class Api::V1::UsersController < ApplicationController
     render json: @user
   end
 
+  def show
+    @user = User.find(params[:id])
+    render json: @user
+  end
+
   def update
     @user = User.find(params[:id])
     if @user.update(user_params)
@@ -28,6 +33,6 @@ class Api::V1::UsersController < ApplicationController
   private
 
   def user_params
-    params.permit(:name)
+    params.require(:user).permit(:name)
   end
 end
